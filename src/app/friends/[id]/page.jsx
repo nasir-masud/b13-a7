@@ -5,9 +5,8 @@ import { FiTrash2 } from "react-icons/fi";
 import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { PiArchive } from "react-icons/pi";
 
-// https://b13-a7-one.vercel.app/
 const getFriends = async () => {
-  const res = await fetch("http://localhost:3000/friends.json", { cache: "no-store" });
+  const res = await fetch("https://b13-a7-one.vercel.app/friends.json", { cache: "no-store" });
   if (!res.ok) return [];
   return res.json();
 };
