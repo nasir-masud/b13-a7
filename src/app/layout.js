@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import { FriendProvider } from "./context/FriendContext";
 import { ToastContainer } from "react-toastify";
 
+import initialFriends from "../../public/friends.json";
+
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -16,10 +18,7 @@ export const metadata = {
   description: "Keep Your Friendships Alive",
 };
 
-export default async function RootLayout({ children }) {
-  const res = await fetch("https://b13-a7-one.vercel.app/friends.json");
-  const initialFriends = await res.json();
-
+export default function RootLayout({ children }) {
   return (
     <html
       lang='en'
