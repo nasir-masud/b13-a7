@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { FriendProvider } from "./context/FriendContext";
 import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -16,8 +17,8 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  // const res = await fetch("https://b13-a7-one.vercel.app/friends.json");
-  // const initialFriends = await res.json();
+  const res = await fetch("http://localhost:3000/friends.json");
+  const initialFriends = await res.json();
 
   return (
     <html
@@ -29,10 +30,12 @@ export default async function RootLayout({ children }) {
         className={`${geistSans.className} min-h-full flex flex-col bg-[#f8fafc]`}
         suppressHydrationWarning={true}
       >
-        <NavBar />
-        <main className='grow'>{children}</main>
-        <ToastContainer />
-        <Footer />
+        <FriendProvider initialData={initialFriends}>
+          <NavBar />
+          <main className='grow'>{children}</main>
+          <ToastContainer />
+          <Footer />
+        </FriendProvider>
       </body>
     </html>
   );
