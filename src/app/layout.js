@@ -16,6 +16,8 @@ export const metadata = {
   description: "Keep Your Friendships Alive",
 };
 
+// https://b13-a7-one.vercel.app/
+
 export default async function RootLayout({ children }) {
   const res = await fetch("http://localhost:3000/friends.json");
   const initialFriends = await res.json();

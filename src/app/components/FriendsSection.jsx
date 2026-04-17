@@ -1,5 +1,6 @@
 import FriendCard from './FriendCard';
 
+// https://b13-a7-one.vercel.app/
 export default async function FriendsSection() {
   const res = await fetch("http://localhost:3000/friends.json", {
     cache: "no-store",
